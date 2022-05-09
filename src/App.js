@@ -1,11 +1,19 @@
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import BaseLayout from './components/layout/BaseLayout'
+import Home from './components/Home';
 
 import './App.css';
 
-import React from 'react'
-
 const App = () => {
   return (
-    <div>App</div>
+    <Router>
+        <BaseLayout>
+            <Routes>
+                <Route path="/" element={<Home />} />
+            </Routes>
+        </BaseLayout>
+    </Router>
   )
 }
 
