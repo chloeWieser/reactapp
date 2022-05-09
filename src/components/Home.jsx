@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react'
+import { useDispatch } from 'react-redux';
 import { key2 } from '../secrets';
+import {addToBoard} from '../actions/boardActions'
 // import { createClient } from 'pexels';
 
 const Home = () => {   //GETS CALLED EVERYTIME TIME A PROP CHANGES OR THE STATE CHANGES
@@ -27,6 +29,8 @@ const Home = () => {   //GETS CALLED EVERYTIME TIME A PROP CHANGES OR THE STATE 
   const [curatedPhotos, setCuratedPhotos] = useState([]);
   const [query, setQuery] = useState('');
 
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
 
@@ -103,10 +107,11 @@ const Home = () => {   //GETS CALLED EVERYTIME TIME A PROP CHANGES OR THE STATE 
       <input onChange={updateQuery} />
       <button onClick={submitQuery}>Search</button>
         {curatedPhotos.map(photo => (
-          <div>
-            <img src={photo.src.medium} />
-          </div>
-        ))}
+        <div>
+          <img src={photo.src.medium} />
+          <button className="btn btn-warning" onClick={()=>{return dispatch(addToBoard(photo))}}>Add To Board</button>
+        </div>
+          ))}
     </>
   )
 }
