@@ -1,7 +1,10 @@
 import React, {useState, useEffect} from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { key2 } from '../secrets';
 import {addToBoard} from '../actions/boardActions'
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Dropdown from 'react-bootstrap/Dropdown';
+
 // import { createClient } from 'pexels';
 
 const Home = () => {   //GETS CALLED EVERYTIME TIME A PROP CHANGES OR THE STATE CHANGES
@@ -28,7 +31,7 @@ const Home = () => {   //GETS CALLED EVERYTIME TIME A PROP CHANGES OR THE STATE 
 
   const [curatedPhotos, setCuratedPhotos] = useState([]);
   const [query, setQuery] = useState('');
-
+  const boardList = useSelector(state => state.allBoards.boardTitles) 
 
   const dispatch = useDispatch();
 
@@ -112,7 +115,12 @@ const Home = () => {   //GETS CALLED EVERYTIME TIME A PROP CHANGES OR THE STATE 
           <div className="col-4 mb-5 product">
             <img class = "product img" src={photo.src.medium} />
             <div>{photo.photographer}</div>
-            <button class = "addButton" onClick={()=>{return dispatch(addToBoard(photo))}}>Add To Board</button>
+            <DropdownButton title="Add To Board" variant="dark" className="addButton" onClick={()=>{return dispatch(addToBoard(photo))}}>
+            {boardList.map((board) =>{
+                console.log(board)
+                return <Dropdown.Item href="/components/Board">{board.title}</Dropdown.Item>
+            })}
+            </DropdownButton>
           </div>
             ))}
       </div>

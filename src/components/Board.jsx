@@ -1,5 +1,6 @@
 import React from 'react'
 import {useSelector} from 'react-redux'
+import { Routes, Route, useParams } from "react-router-dom";
 
 
 
@@ -9,6 +10,7 @@ const BoardItems = () => {
 
 
   return (
+    
     <>
       <div>
         {
