@@ -1,5 +1,6 @@
 import React from 'react'
-import {useDispatch, useSelector} from 'react-redux'
+import {useSelector} from 'react-redux'
+import { Link } from "react-router-dom";
 
 const AllBoards = () => {  
 
@@ -15,7 +16,7 @@ const AllBoards = () => {
       <ul>
         {boardList.map((board, index) =>{
           console.log(board)
-          return <li key={index}>{board.title}</li>
+          return <li key={index}><Link to="/components/Board">{board.title}</Link></li>
             }
         )}
       </ul>
@@ -26,3 +27,9 @@ const AllBoards = () => {
 
 }
 export default AllBoards
+
+
+// return <li key={index}>{board.title}</li>
+
+
+{/* <li> <Link to="/components/Board">Board</Link></li> */}

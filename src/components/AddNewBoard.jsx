@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {v4 as uuidv4} from 'uuid'
-import {useDispatch, useSelector} from 'react-redux'//added
+import {useDispatch} from 'react-redux'//added
 import {addNewBoard} from '../actions/addNewBoard'
 
 const AddNewBoard = () => {
@@ -8,7 +8,7 @@ const AddNewBoard = () => {
   const [title, setTitle] = useState("")
 
   const dispatch = useDispatch()  //dispatch is used to run the action
-  const boards = useSelector(state => state.boardTitles)
+
 
     // show the current boardTitles
 

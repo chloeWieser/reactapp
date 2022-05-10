@@ -6,7 +6,7 @@ import {useSelector} from 'react-redux'
 const BoardItems = () => {
 
   const boardItems = useSelector(state => state.board.boardItems) //an array of objects 
-  const numberOfItems = useSelector(state =>  state.board.numberOfItems); 
+
 
   return (
     <>
