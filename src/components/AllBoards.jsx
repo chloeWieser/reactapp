@@ -13,8 +13,9 @@ const AllBoards = () => {
 
     Display Boards
       <ul>
-        {boardList.map((allBoards, index) =>{
-          return <li key={index}>{allBoards.title}</li>
+        {boardList.map((board, index) =>{
+          console.log(board)
+          return <li key={index}>{board.title}</li>
             }
         )}
       </ul>

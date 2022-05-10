@@ -8,7 +8,6 @@ const allBoardsReducer = (state, action) => {
     if(state === undefined){
         state = {
             boardTitles: [],  //[{}]
-            numberOfItems: 0, 
         }
     }
 
@@ -18,13 +17,12 @@ const allBoardsReducer = (state, action) => {
         case ADD_NEW_BOARD: 
             
             let newBoard = [...state.boardTitles] //copying whatever is in state 
-            newBoard.push({...action.data.title, quantity: 1})
+            newBoard.push({title: action.data.title})
 
 
             return {
                 ...state,
-                boardTitles: newBoard,
-                numberOfItems: state.numberOfItems + 1
+                boardTitles: newBoard
             }
 
         default:
