@@ -17,20 +17,20 @@ const BoardItems = () => {
           <div>Board is empty</div>
           : 
           <div>
-            You have <em>{numberOfItems}</em> items on your board
+
           </div>
         }
       </div>
 
 
-        <div className="row board-items">
+        <div className="imageBlock row">
           {
             boardItems.map(item =>{
-              return <div key={item.id} className="col-12 d-flex flex-column">
+              return <div key={item.id} className="col-4 mb-5 product">
 
-                  <div className="d-flex">
+                  <div>
                     <div>
-                      <img src={item.src.medium} alt="" />
+                      <img class = "product img"src={item.src.medium} alt="" />
                     </div>
 
                     <div>{item.photographer}</div>
@@ -38,7 +38,7 @@ const BoardItems = () => {
 
                   <div>
 
-                    <button className="btn btn-warning">Remove</button>
+                    <button class = "removeButton">Remove</button>
                   </div>
               </div>
             })
@@ -50,3 +50,5 @@ const BoardItems = () => {
 }
 
 export default BoardItems
+
+

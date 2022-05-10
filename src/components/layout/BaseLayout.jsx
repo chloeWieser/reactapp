@@ -4,13 +4,10 @@ import Header from './Header'
 const BaseLayout = (props) => {
   return (
     <>
-        <Header /><br /><br /><br />
+        <Header />
 
         {props.children}
 
-        <br /><br />
-
-        Footer Information here<br /><br />
     </>
   )
 }

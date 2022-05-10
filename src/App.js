@@ -9,6 +9,7 @@ import AddNewBoard from './components/AddNewBoard';
 import AllBoards from './components/AllBoards';
 import './App.css';
 import rootReducer from './reducers/index.js'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 const App = () => {
 

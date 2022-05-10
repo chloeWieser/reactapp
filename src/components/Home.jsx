@@ -104,14 +104,19 @@ const Home = () => {   //GETS CALLED EVERYTIME TIME A PROP CHANGES OR THE STATE 
 
   return (
     <>
-      <input onChange={updateQuery} />
-      <button onClick={submitQuery}>Search</button>
-        {curatedPhotos.map(photo => (
-        <div>
-          <img src={photo.src.medium} />
-          <button className="btn btn-warning" onClick={()=>{return dispatch(addToBoard(photo))}}>Add To Board</button>
-        </div>
-          ))}
+      <input className="col-4 mb-5 p-1" onChange={updateQuery} />
+      <button class = "searchButton" onClick={submitQuery}>Search</button>
+
+        <div className="imageBlock row">
+          {curatedPhotos.map(photo => (
+          <div className="col-4 mb-5 product">
+            <img class = "product img" src={photo.src.medium} />
+            <div>{photo.photographer}</div>
+            <button class = "addButton" onClick={()=>{return dispatch(addToBoard(photo))}}>Add To Board</button>
+          </div>
+            ))}
+      </div>
+
     </>
   )
 }
