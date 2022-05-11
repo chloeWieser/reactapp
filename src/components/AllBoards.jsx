@@ -1,12 +1,14 @@
 import React from 'react'
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
 import { Link } from "react-router-dom";
+import {removeBoard} from '../actions/removeBoard'
 
 const AllBoards = () => {  
 
         //display the current boards
         const boardList = useSelector(state => state.allBoards.boardTitles)  //added
         const counter = useSelector(state => state.count)
+        const dispatch = useDispatch();  //store.dispatch(action)
 
 
   return (
@@ -16,7 +18,7 @@ const AllBoards = () => {
       <ul>
         {boardList.map((board, index) =>{
           console.log(board)
-          return <li key={index}><Link to={`/components/Board/${board.title}`}>{board.title}</Link></li>
+          return <li key={index}><Link to={`/components/Board/${board.title}`}>{board.title}</Link><a href="#" onClick={()=>dispatch(removeBoard(board.id))}>X</a></li>
             }
         )}
       </ul>
@@ -27,6 +29,7 @@ const AllBoards = () => {
 
 }
 export default AllBoards
+
 
 
 // return <li key={index}>{board.title}</li>

@@ -7,7 +7,7 @@ import allBoardsReducer from './allBoardsReducer'
 
 const rootReducer = combineReducers({
     board: boardReducer,
-    allBoards: allBoardsReducer
+    // allBoards: allBoardsReducer
 })
 
 

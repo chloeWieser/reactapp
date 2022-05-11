@@ -41,7 +41,7 @@ const BoardItems = () => {
 
                   <div>
                     <div>
-                      <img class = "product img"src={item.src.medium} alt="" />
+                      <img className = "product img"src={item.src.medium} alt="" />
                     </div>
 
                     <div>{item.photographer}</div>
@@ -49,7 +49,7 @@ const BoardItems = () => {
 
                   <div>
 
-                    <button class = "removeButton">Remove</button>
+                    <button className = "removeButton">Remove</button>
                   </div>
               </div>
             })

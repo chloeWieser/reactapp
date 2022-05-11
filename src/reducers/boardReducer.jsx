@@ -1,4 +1,4 @@
-import {ADD_TO_BOARD, ADD_NEW_BOARD} from '../actions/types'
+import {ADD_TO_BOARD, ADD_NEW_BOARD, REMOVE_BOARD} from '../actions/types'
 // []
 //we wire this up by importing this into the reducers index.js, to combine it
 const boardReducer = (state, action) => {
@@ -73,11 +73,37 @@ const boardReducer = (state, action) => {
            
             return {
                 ...state,
-                [action.title]: [action.photo]
+                [action.title]: [...state[action.title], action.photo]
+            }
+
+
+        // case "REMOVE_FROM_BOARD":
+        //     return{
+        //         ...state,
+        //         [action.title]: state.[action.title].filter([action.title] =>{
+        //             return [action.title].id!== action.id
+        //         }),
+
+        //     }
+            
+
+        case REMOVE_BOARD:
+            console.log(state)
+
+            return{
+                // ...state,
+                // [action.data.title]: state.[action.data.title].filter([action.data.title]) =>{
+                //     return board.id!== board.id
+                // })
+
+                // ...state,
+                // boardItems: state.boardItems.filter(board =>{
+                //     return board.data.id !== action.data.id
+                // })
             }
 
         default:
-            return state
+            return state;
     }
 }
 
