@@ -16,7 +16,7 @@ const AllBoards = () => {
       <ul>
         {boardList.map((board, index) =>{
           console.log(board)
-          return <li key={index}><Link to="/components/Board">{board.title}</Link></li>
+          return <li key={index}><Link to={`/components/Board/${board.title}`}>{board.title}</Link></li>
             }
         )}
       </ul>

@@ -31,6 +31,7 @@ const Home = () => {   //GETS CALLED EVERYTIME TIME A PROP CHANGES OR THE STATE 
 
   const [curatedPhotos, setCuratedPhotos] = useState([]);
   const [query, setQuery] = useState('');
+  const [selectedBoard, setSelectedBoard] = useState('')
   const boardList = useSelector(state => state.allBoards.boardTitles) 
 
   const dispatch = useDispatch();
@@ -83,7 +84,7 @@ const Home = () => {   //GETS CALLED EVERYTIME TIME A PROP CHANGES OR THE STATE 
 
 
 
-  console.log('curatedPhotos', curatedPhotos)
+  //console.log('curatedPhotos', curatedPhotos)
 
   const updateQuery = e => {
     console.log('updateQuery', e.target.value);
@@ -105,6 +106,24 @@ const Home = () => {   //GETS CALLED EVERYTIME TIME A PROP CHANGES OR THE STATE 
       setCuratedPhotos(data.photos);
   }
 
+
+  const handleAddToBoard = (e, photo)=>{
+
+    //update the state 
+
+    
+
+    // setSelectedBoard(e.target.value) //updates local state
+
+    // console.log("target", e.target.value)
+
+    // console.log('inside handle Add To board, selected board name and selected photo: ', selectedBoard)
+
+    //onClick={()=>{return dispatch(addToBoard(selectedBoard, photo))}}
+
+    dispatch(addToBoard(e.target.value, photo)) //dispatch action with selected board and photo
+  }
+
   return (
     <>
       <input className="col-4 mb-5 p-1" onChange={updateQuery} />
@@ -112,16 +131,24 @@ const Home = () => {   //GETS CALLED EVERYTIME TIME A PROP CHANGES OR THE STATE 
 
         <div className="imageBlock row">
           {curatedPhotos.map(photo => (
-          <div className="col-4 mb-5 product">
-            <img class = "product img" src={photo.src.medium} />
-            <div>{photo.photographer}</div>
-            <DropdownButton title="Add To Board" variant="dark" className="addButton" onClick={()=>{return dispatch(addToBoard(photo))}}>
-            {boardList.map((board) =>{
-                console.log(board)
-                return <Dropdown.Item href="/components/Board">{board.title}</Dropdown.Item>
-            })}
-            </DropdownButton>
-          </div>
+
+              <div className="col-4 mb-5 product">
+                <img class = "product img" src={photo.src.medium} />
+                <div>{photo.photographer}</div>
+
+                <select value={selectedBoard} onChange={(e)=> handleAddToBoard(e, photo)}>
+
+                  <option value="">Select a board</option>
+                  {boardList.map((board) =>{
+                        
+                        return <option value={board.title}>{board.title}</option>
+                    })}
+                  
+
+                </select> 
+               
+              </div>
+
             ))}
       </div>
 

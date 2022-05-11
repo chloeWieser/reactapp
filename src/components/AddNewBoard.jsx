@@ -23,6 +23,7 @@ const AddNewBoard = () => {
     <>
       Add New Board 
       <form onSubmit={handleOnSubmit}>
+        
         <input type="text" placeholder="Title" value={title} onChange={e => setTitle(e.target.value)} />
         <button type="submit">Add New Board</button>
       </form>

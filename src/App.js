@@ -25,6 +25,7 @@ const App = () => {
                   <Route path="/components/add_new_board" element={<AddNewBoard />}/>
                   <Route path="/components/AllBoards" element={<AllBoards />} />
                   <Route path="/components/Board" element={<Board />} />
+                  <Route path="/components/Board/:board" element={<Board />} />
               </Routes>
           </BaseLayout>
       </Router>

@@ -6,15 +6,24 @@ import { Routes, Route, useParams } from "react-router-dom";
 
 const BoardItems = () => {
 
+
+  const {board} = useParams();
+
   const boardItems = useSelector(state => state.board.boardItems) //an array of objects 
+  const selectedBoardItems = useSelector(state => state.board) //an array of objects 
+
+
+  console.log(selectedBoardItems[board])
 
 
   return (
     
     <>
+
+    <h2>{board}</h2>
       <div>
         {
-          boardItems.length === 0 
+          selectedBoardItems[board].length === 0 
           ? 
           <div>Board is empty</div>
           : 
@@ -27,7 +36,7 @@ const BoardItems = () => {
 
         <div className="imageBlock row">
           {
-            boardItems.map(item =>{
+            selectedBoardItems[board].map(item =>{
               return <div key={item.id} className="col-4 mb-5 product">
 
                   <div>
