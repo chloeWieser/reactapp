@@ -19,6 +19,7 @@ const AllBoards = () => {
     <>
     
     <div  className="centered">
+
         <ul>
           {boards.map((board, index) =>{
             console.log(board)
