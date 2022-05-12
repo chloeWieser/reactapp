@@ -17,9 +17,6 @@ const boardReducer = (state, action) => {
    //
     if(state === undefined){
         state = {
-            boardItems: [],  //[{}]
-            numberOfItems: 0, 
-            
 
         }
     }
@@ -77,30 +74,23 @@ const boardReducer = (state, action) => {
             }
 
 
-        // case "REMOVE_FROM_BOARD":
-        //     return{
-        //         ...state,
-        //         [action.title]: state.[action.title].filter([action.title] =>{
-        //             return [action.title].id!== action.id
-        //         }),
-
-        //     }
+        case "REMOVE_FROM_BOARD":
+            return{
+                ...state,
+                [action.data.boardTitle]: state[action.data.boardTitle].filter(photo =>{
+                    return photo.id !== action.data.itemId
+                })
+            }
             
 
         case REMOVE_BOARD:
             console.log(state)
 
-            return{
-                // ...state,
-                // [action.data.title]: state.[action.data.title].filter([action.data.title]) =>{
-                //     return board.id!== board.id
-                // })
+            delete state[action.data.title];
 
-                // ...state,
-                // boardItems: state.boardItems.filter(board =>{
-                //     return board.data.id !== action.data.id
-                // })
-            }
+            return {
+                ...state,
+            };
 
         default:
             return state;

@@ -1,11 +1,10 @@
-import {REMOVE_BOARD} from './types'
+import { REMOVE_BOARD } from './types'
 
-export const removeBoard = (id, title) => {
+export const removeBoard = (title) => {
     return {
-        type : REMOVE_BOARD,
+        type: REMOVE_BOARD,
         data: {
-            id,
             title
+        }
     }
-}
 }

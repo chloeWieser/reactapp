@@ -1,6 +1,9 @@
-export const removeFromBoard = (id) => {
+export const removeFromBoard = (boardTitle, itemId) => {
     return {
-        type : 'REMOVE_FROM_BOARD',
-        id
+        type: 'REMOVE_FROM_BOARD',
+        data: {
+            boardTitle,
+            itemId
+        }
     }
 }

@@ -32,7 +32,7 @@ const Home = () => {   //GETS CALLED EVERYTIME TIME A PROP CHANGES OR THE STATE 
   const [curatedPhotos, setCuratedPhotos] = useState([]);
   const [query, setQuery] = useState('');
   const [selectedBoard, setSelectedBoard] = useState('')
-  const boardList = useSelector(state => state.allBoards.boardTitles) 
+  const boardList = useSelector(state => state.board) 
 
   const dispatch = useDispatch();
 
@@ -82,6 +82,10 @@ const Home = () => {   //GETS CALLED EVERYTIME TIME A PROP CHANGES OR THE STATE 
 
   // }, [])
 
+  let boards = [];
+  for(let board in boardList) {
+    boards.push({ title: board, board: boardList[board]});
+  }
 
 
   //console.log('curatedPhotos', curatedPhotos)
@@ -126,9 +130,11 @@ const Home = () => {   //GETS CALLED EVERYTIME TIME A PROP CHANGES OR THE STATE 
 
   return (
     <>
-      <input className="col-4 mb-5 p-1" onChange={updateQuery} />
-      <button class = "searchButton" onClick={submitQuery}>Search</button>
-
+    <div  className="centered">
+      <div className="mb-5 p-2">
+        <input  className="p-1" onChange={updateQuery} />
+        <button className="searchButton" onClick={submitQuery}>Search</button>
+      </div>
         <div className="imageBlock row">
           {curatedPhotos.map(photo => (
 
@@ -139,7 +145,7 @@ const Home = () => {   //GETS CALLED EVERYTIME TIME A PROP CHANGES OR THE STATE 
                 <select value={selectedBoard} onChange={(e)=> handleAddToBoard(e, photo)}>
 
                   <option value="">Select a board</option>
-                  {boardList.map((board) =>{
+                  {boards.map((board) =>{
                         
                         return <option value={board.title}>{board.title}</option>
                     })}
@@ -151,7 +157,7 @@ const Home = () => {   //GETS CALLED EVERYTIME TIME A PROP CHANGES OR THE STATE 
 
             ))}
       </div>
-
+    </div>
     </>
   )
 }

@@ -1,6 +1,7 @@
 import React from 'react'
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
 import { Routes, Route, useParams } from "react-router-dom";
+import { removeFromBoard } from '../actions/removeFromBoard';
 
 
 
@@ -8,8 +9,8 @@ const BoardItems = () => {
 
 
   const {board} = useParams();
+  const dispatch = useDispatch();
 
-  const boardItems = useSelector(state => state.board.boardItems) //an array of objects 
   const selectedBoardItems = useSelector(state => state.board) //an array of objects 
 
 
@@ -19,13 +20,14 @@ const BoardItems = () => {
   return (
     
     <>
+    <div  className="centered">
 
     <h2>{board}</h2>
       <div>
         {
           selectedBoardItems[board].length === 0 
           ? 
-          <div>Board is empty</div>
+          <div>'{board}' board is empty</div>
           : 
           <div>
 
@@ -41,7 +43,7 @@ const BoardItems = () => {
 
                   <div>
                     <div>
-                      <img className = "product img"src={item.src.medium} alt="" />
+                      <img className="product img"src={item.src.medium} alt="" />
                     </div>
 
                     <div>{item.photographer}</div>
@@ -49,13 +51,13 @@ const BoardItems = () => {
 
                   <div>
 
-                    <button className = "removeButton">Remove</button>
+                    <button className="removeButton" onClick={() => dispatch(removeFromBoard(board, item.id))}>Remove</button>
                   </div>
               </div>
             })
           }
         </div>
-
+      </div>
     </>
   )
 }
